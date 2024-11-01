@@ -90,4 +90,13 @@ public class BookServiceImpl implements BookService {
                 .map(book -> book.getTitle())
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<String> findTitlesForBooksNotPublishedIn(int year) {
+        return bookRepository.findAllByReleaseDateLessThanOrReleaseDateGreaterThan(
+                LocalDate.of(year, 1, 1),
+                LocalDate.of(year, 12, 31)
+        ).stream().map(b -> b.getTitle())
+                .toList();
+    }
 }

@@ -16,4 +16,6 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
 
     List<Book> findAllByAgeRestriction(AgeRestriction ageRestriction);
+
+    List<Book> findAllByReleaseDateLessThanOrReleaseDateGreaterThan(LocalDate start, LocalDate end);
 }

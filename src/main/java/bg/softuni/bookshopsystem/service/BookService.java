@@ -12,4 +12,6 @@ public interface BookService {
     List<String> findAllBooksAfterYear2000();
 
     List<String> findAllByAgeRestriction(AgeRestriction ageRestriction);
+
+    List<String> findTitlesForBooksNotPublishedIn(int i);
 }

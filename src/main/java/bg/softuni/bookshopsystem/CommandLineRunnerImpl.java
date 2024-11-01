@@ -32,7 +32,15 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         SeedData();
 
 
-        printBooksByAgeRestriction();
+//        printBooksByAgeRestriction();
+
+        printBooksNotIssuedAt();
+    }
+
+    private void printBooksNotIssuedAt() {
+        List<String> titles = bookService.findTitlesForBooksNotPublishedIn(2000);
+
+        titles.forEach(System.out::println);
     }
 
     private void SeedData() throws IOException {
