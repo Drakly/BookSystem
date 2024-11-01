@@ -55,4 +55,9 @@ public class AuthorServiceImpl implements AuthorService {
                 .map(author -> String.format("%s %s", author.getFirstName(), author.getLastName()))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public int getTotalCopiesCountFor(String firstName, String lastName) {
+        return authorRepository.countBookCopiesByAuthorName(firstName, lastName);
+    }
 }

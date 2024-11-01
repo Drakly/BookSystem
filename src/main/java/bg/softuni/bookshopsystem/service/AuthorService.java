@@ -12,4 +12,6 @@ public interface AuthorService {
     Author getRandomAuthor();
 
     List<String> getAllAuthorsFirstAndLastNameForBooksBeforeYear1990();
+
+    int getTotalCopiesCountFor(String firstName, String lastName);
 }

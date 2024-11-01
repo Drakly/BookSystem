@@ -5,6 +5,7 @@ import bg.softuni.bookshopsystem.data.entities.Book;
 import bg.softuni.bookshopsystem.data.entities.Category;
 import bg.softuni.bookshopsystem.data.entities.enums.AgeRestriction;
 import bg.softuni.bookshopsystem.data.entities.enums.EditionType;
+import bg.softuni.bookshopsystem.data.repositories.BookInfo;
 import bg.softuni.bookshopsystem.data.repositories.BookRepository;
 import bg.softuni.bookshopsystem.service.AuthorService;
 import bg.softuni.bookshopsystem.service.BookService;
@@ -98,5 +99,15 @@ public class BookServiceImpl implements BookService {
                 LocalDate.of(year, 12, 31)
         ).stream().map(b -> b.getTitle())
                 .toList();
+    }
+
+    @Override
+    public BookInfo findInfoByTitle(String title) {
+        return bookRepository.findByTitle(title);
+    }
+
+    @Override
+    public void sellCopies(int bookId, int copiesSold) {
+        bookRepository.updateBookCopiesById(bookId, copiesSold);
     }
 }

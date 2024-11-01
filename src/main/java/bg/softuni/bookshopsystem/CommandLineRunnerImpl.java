@@ -1,6 +1,7 @@
 package bg.softuni.bookshopsystem;
 
 import bg.softuni.bookshopsystem.data.entities.enums.AgeRestriction;
+import bg.softuni.bookshopsystem.data.repositories.BookInfo;
 import bg.softuni.bookshopsystem.service.AuthorService;
 import bg.softuni.bookshopsystem.service.BookService;
 import bg.softuni.bookshopsystem.service.CategoryService;
@@ -34,7 +35,35 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
 
 //        printBooksByAgeRestriction();
 
-        printBooksNotIssuedAt();
+//        printBooksNotIssuedAt();
+
+//        printTotalBookCopiesForAuthor();
+
+//        printBookProjection();
+
+        updateBookCopiesById();
+    }
+
+    private void updateBookCopiesById() {
+        bookService.sellCopies(1, 1200);
+    }
+
+    private void printBookProjection() {
+        Scanner scanner = new Scanner(System.in);
+        String title = scanner.nextLine();
+
+        BookInfo info = bookService.findInfoByTitle(title);
+
+        System.out.println(info);
+    }
+
+    private void printTotalBookCopiesForAuthor() {
+        Scanner scanner = new Scanner(System.in);
+        String[] authorName = scanner.nextLine().split(" ");
+
+        int count = authorService.getTotalCopiesCountFor(authorName[0], authorName[1]);
+
+        System.out.printf("%s %s %d", authorName[0], authorName[1], count);
     }
 
     private void printBooksNotIssuedAt() {
