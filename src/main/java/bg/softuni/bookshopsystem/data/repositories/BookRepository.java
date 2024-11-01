@@ -1,6 +1,7 @@
 package bg.softuni.bookshopsystem.data.repositories;
 
 import bg.softuni.bookshopsystem.data.entities.Book;
+import bg.softuni.bookshopsystem.data.entities.enums.AgeRestriction;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,4 +13,7 @@ import java.util.Set;
 public interface BookRepository extends JpaRepository<Book, Integer> {
 
     Set<Book> findAllByReleaseDateAfter(LocalDate date);
+
+
+    List<Book> findAllByAgeRestriction(AgeRestriction ageRestriction);
 }

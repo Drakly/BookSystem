@@ -81,4 +81,13 @@ public class BookServiceImpl implements BookService {
                 .map(Book::getTitle)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<String> findAllByAgeRestriction(AgeRestriction restriction) {
+
+        return bookRepository.findAllByAgeRestriction(restriction)
+                .stream()
+                .map(book -> book.getTitle())
+                .collect(Collectors.toList());
+    }
 }
